@@ -48,5 +48,21 @@ public class UserDaoImpl implements UserDao{
 		getSession().update(usr);
 		return true;
 	}
+	
+	@Override
+	public boolean validate(String userName, String password) {
+
+        UserEntity userEntity = null;
+      
+        userEntity = (UserEntity) getSession().createQuery("FROM UserEntity U WHERE U.username = :username").setParameter("username", userName).uniqueResult();
+
+            if (userEntity != null && userEntity.getPassword().equals(password)) {
+            	System.out.println("true");
+                return true;
+            }
+        System.out.println("fail");    
+        return false;
+    }
+
 
 }

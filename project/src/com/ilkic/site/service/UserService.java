@@ -15,4 +15,6 @@ public interface UserService {
 	public boolean deleteUser(int userId); //DELETE
 	
 	public boolean updateUser(UserEntity usr); // UPDATE
+
+	public boolean validate(String userName, String password);
 }

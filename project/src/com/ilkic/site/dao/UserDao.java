@@ -15,5 +15,7 @@ public interface UserDao {
 	public boolean deleteUser(int userId);
 
 	public boolean updateUser(UserEntity usr);
+	
+	public boolean validate(String userName, String password);
 		
 }
