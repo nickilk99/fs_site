@@ -42,8 +42,8 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public boolean validate(String userName, String password) {
-		return userDao.validate(userName, password);
+	public boolean validate(UserEntity usr) {
+		return userDao.validate(usr);
 	}
 
 }

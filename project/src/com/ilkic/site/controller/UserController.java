@@ -42,11 +42,11 @@ public class UserController {
 	
 	@RequestMapping(value = "validate", method = RequestMethod.POST)
 	public String login(@ModelAttribute("student") UserEntity usr) {
-		String username = usr.getUsername();
-		String password = usr.getPassword();
+//		String username = usr.getUsername();
+//		String password = usr.getPassword();
 		
-		if (service.validate(username, password))
-			return "redirect:/index";
+		if (service.validate(usr))
+			return "redirect:/home";
 		else {
 			return "ErrorPage";
 		}

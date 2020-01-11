@@ -16,5 +16,5 @@ public interface UserService {
 	
 	public boolean updateUser(UserEntity usr); // UPDATE
 
-	public boolean validate(String userName, String password);
+	public boolean validate(UserEntity usr);
 }

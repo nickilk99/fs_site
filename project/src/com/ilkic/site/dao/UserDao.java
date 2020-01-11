@@ -16,6 +16,6 @@ public interface UserDao {
 
 	public boolean updateUser(UserEntity usr);
 	
-	public boolean validate(String userName, String password);
+	public boolean validate(UserEntity usr);
 		
 }
