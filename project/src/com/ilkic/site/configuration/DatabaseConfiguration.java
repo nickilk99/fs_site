@@ -18,7 +18,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableTransactionManagement
-@ComponentScan("com.johnabbott")
+@ComponentScan("com.ilkic")
 @PropertySource("classpath:database.properties")
 public class DatabaseConfiguration {
 	
@@ -41,7 +41,7 @@ public class DatabaseConfiguration {
 	public LocalSessionFactoryBean sessionFactory() {
 		LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
 		sessionFactory.setDataSource(dataSource());
-		sessionFactory.setPackagesToScan(new String[] { "com.johnabbott" });
+		sessionFactory.setPackagesToScan(new String[] { "com.ilkic" });
 		sessionFactory.setHibernateProperties(hibernateProperties());
 		return sessionFactory;
 	}

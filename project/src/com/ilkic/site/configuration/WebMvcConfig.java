@@ -8,7 +8,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
-@ComponentScan("com.johnabbott")
+@ComponentScan("com.ilkic")
 public class WebMvcConfig {
 
 	@Bean
