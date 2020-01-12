@@ -2,6 +2,9 @@ package com.ilkic.site.service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import com.ilkic.site.model.UserEntity;
 
 public interface UserService {
@@ -16,5 +19,7 @@ public interface UserService {
 	
 	public boolean updateUser(UserEntity usr); // UPDATE
 
-	public boolean validate(UserEntity usr);
+	public boolean validate(UserEntity usr, HttpSession session);
+	
+	boolean isLogged(HttpServletRequest request);
 }

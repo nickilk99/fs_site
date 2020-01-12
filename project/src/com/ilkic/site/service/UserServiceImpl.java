@@ -1,6 +1,10 @@
 package com.ilkic.site.service;
 
+import java.lang.ProcessBuilder.Redirect;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,8 +46,16 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public boolean validate(UserEntity usr) {
-		return userDao.validate(usr);
+	public boolean validate(UserEntity usr, HttpSession session) {
+		return userDao.validate(usr, session);
+	}
+
+	@Override
+	public boolean isLogged(HttpServletRequest request) {
+		if (request.getSession().getAttribute("UserEntity") != null) {
+			return true;
+		}
+		return false;
 	}
 
 }

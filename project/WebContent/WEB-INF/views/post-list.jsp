@@ -9,26 +9,26 @@
 <body>
 <%@include file='/WEB-INF/views/template/menu.jsp'%>
 	<div>
-		<a href="addstudent">View Users</a>
+		<a href="#">Link</a>
 	</div>
 
 	<div align="center">
-		Cool Student List
+		Post List
 		<table border="1">
 			<tr>
-				<th>name</th>
-				<th>user name</th>
-				<th>email</th>
+				<th>title</th>
+				<th>body</th>
+				<th>author</th>
 			</tr>
 
-			<c:forEach var="user" items="${userList}">
+			<c:forEach var="post" items="${postList}">
 				<tr>
-					<td><c:out value="${user.name}"></c:out></td>
-					<td><c:out value="${user.username}"></c:out></td>
-					<td><c:out value="${user.email}"></c:out></td>
-					<td><a href="edituser?userId=${user.id}">update
+					<td><c:out value="${post.title}"></c:out></td>
+					<td><c:out value="${post.postBody}"></c:out></td>
+					<td><c:out value="${post.author}"></c:out></td>
+					<td><a href="editpost?postId=${post.id}">update
 							me!</a></td>
-					<td><a href="deleteuser?userId=${user.id}">delete
+					<td><a href="deletepost?postId=${post.id}">delete
 							me</a></td>
 				</tr>
 			</c:forEach>

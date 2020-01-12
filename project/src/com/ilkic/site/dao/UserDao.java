@@ -2,6 +2,8 @@ package com.ilkic.site.dao;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import com.ilkic.site.model.UserEntity;
 
 public interface UserDao {
@@ -16,6 +18,6 @@ public interface UserDao {
 
 	public boolean updateUser(UserEntity usr);
 	
-	public boolean validate(UserEntity usr);
+	boolean validate(UserEntity usr, HttpSession session);
 		
 }

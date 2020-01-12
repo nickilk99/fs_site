@@ -2,6 +2,8 @@ package com.ilkic.site.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -41,17 +43,19 @@ public class UserController {
 	
 	
 	@RequestMapping(value = "validate", method = RequestMethod.POST)
-	public String login(@ModelAttribute("student") UserEntity usr) {
-//		String username = usr.getUsername();
-//		String password = usr.getPassword();
+	public String login(@ModelAttribute("user") UserEntity usr, HttpSession session) {
+
 		
-		if (service.validate(usr))
+		if (service.validate(usr, session))
+			
 			return "redirect:/home";
 		else {
 			return "ErrorPage";
 		}
 	}
 	
+	
+
 	
 	
 	

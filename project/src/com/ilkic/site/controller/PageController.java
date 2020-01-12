@@ -1,12 +1,17 @@
 package com.ilkic.site.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ilkic.site.service.UserService;
+
 @Controller
 public class PageController {
-
+	
+	@Autowired
+	UserService service;
 	
 	@RequestMapping("/")
 	public ModelAndView goHome() {
@@ -26,9 +31,11 @@ public class PageController {
 	
 	@RequestMapping("/posts")
 	public ModelAndView goPosts() {
+	
 		ModelAndView modelView = new ModelAndView("posts");
-
 		return modelView;
+
+		
 	}
 	
 	
@@ -38,7 +45,13 @@ public class PageController {
 
 		return modelView;
 	}
-	
 
 	
+	
+	@RequestMapping("/private")
+	public ModelAndView goPrivate() {
+		ModelAndView modelView = new ModelAndView("private");
+
+		return modelView;
+	}
 }

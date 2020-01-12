@@ -2,6 +2,8 @@ package com.ilkic.site.dao;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,7 +52,7 @@ public class UserDaoImpl implements UserDao{
 	}
 	
 	@Override
-	public boolean validate(UserEntity usr) {
+	public boolean validate(UserEntity usr, HttpSession session) {
 
         UserEntity userEntity = null;
         String userName = usr.getUsername();
@@ -60,6 +62,12 @@ public class UserDaoImpl implements UserDao{
 
             if (userEntity != null && userEntity.getPassword().equals(password)) {
             	System.out.println("true");
+            	session.setAttribute("UserEntity" , userEntity);
+            	
+            	
+            	
+            	
+            	
                 return true;
             }
         System.out.println("fail");    
