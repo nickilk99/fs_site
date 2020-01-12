@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ilkic.site.model.PostEntity;
 import com.ilkic.site.model.UserEntity;
 import com.ilkic.site.service.UserService;
 
@@ -51,6 +52,20 @@ public class UserController {
 			return "redirect:/home";
 		else {
 			return "ErrorPage";
+		}
+	}
+	
+	
+	
+	@RequestMapping(value = "createUser", method = RequestMethod.POST)
+	public String createPost(@ModelAttribute("user") UserEntity user) {
+		if (service.addUser(user)) {
+			System.out.println("success");
+			return "redirect:/home";
+			}
+		else {
+			System.out.println("fail");
+			return "redirect:/home";
 		}
 	}
 	

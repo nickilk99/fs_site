@@ -5,6 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ilkic.site.model.PostEntity;
+import com.ilkic.site.model.UserEntity;
 import com.ilkic.site.service.UserService;
 
 @Controller
@@ -54,4 +56,12 @@ public class PageController {
 
 		return modelView;
 	}
+	
+	@RequestMapping("/register")
+	public ModelAndView goRegister() {
+		ModelAndView modelView = new ModelAndView("registration");
+		modelView.addObject("user", new UserEntity());
+		return modelView;
+	}
+	
 }

@@ -1,16 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page session="true" %>  
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="ISO-8859-1">
-<title>Ilkic.com - Post</title>
+    <title>Ilkic.com - Post</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style><%@include file="/WEB-INF/views/css/main.css"%></style>
 </head>
+
 <body>
-<%@include file='/WEB-INF/views/template/menu.jsp'%>
+    <header>
+
+    </header>
+    <main>
+<%@include file="/WEB-INF/views/template/menu.jsp"%>
+
+        <div class="rightBar">3</div>
+
+
+<div class="middleSection">
 
 	<div align="center">
 		<form:form action="createPost" method="post" modelAttribute="post">
@@ -28,11 +40,17 @@
 	
   					<form:hidden path="author" value="${sessionScope.UserEntity.id}"/>
 				<tr>
-					<td colspan="2"><input type="submit" value="Login"></td>
+					<td colspan="2"><input type="submit" value="Post"></td>
 				</tr>
 			</table>
 
 		</form:form>
 	</div>
+	</div>
 </body>
+<%
+String user = null;
+if(session.getAttribute("UserEntity") == null){
+	response.sendRedirect("login.html");} 
+%>
 </html>

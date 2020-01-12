@@ -1,0 +1,30 @@
+.noListStyle {
+    list-style: none;
+}
+
+header {
+    height: 150px;
+    background-color: aqua;
+    margin-bottom: 20px;
+}
+
+.leftBar {
+    background-color: aqua;
+    float: left;
+    width: 150px;
+}
+
+.rightBar {
+    background-color: aqua;
+    float: right;
+    width: 150px;
+}
+
+.middleSection {
+    background-color: aqua;
+    margin-left: 300px;
+    margin-right: 300px;
+}
+
+
+
