@@ -28,11 +28,7 @@
 	<div align="center">
 		Post List
 
-	<% 
-	UserServiceImpl userservice = (UserServiceImpl)request.getAttribute("userservice");
-	userservice.sayHello();
-	userservice.getUserById(2);
-	%>
+
 	
 	
 	<c:forEach var="post" items="${postList}">
