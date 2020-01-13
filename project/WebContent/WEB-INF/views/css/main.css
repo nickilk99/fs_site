@@ -3,25 +3,62 @@
 }
 
 header {
-    height: 150px;
-    background-color: aqua;
+    height: 120px;
     margin-bottom: 20px;
+    
+}
+
+
+.headerRight{
+	float: right;
+}
+
+.headerTitle{
+	text-align: center;
+	margin: auto;
+  	width: 50%;
+}
+
+a:link {
+  color: black;
+  text-decoration: none;
+}
+
+/* visited link */
+a:visited {
+  color: black;
+  text-decoration: none;
+}
+
+/* mouse over link */
+a:hover {
+  color: grey;
+  text-decoration: none;
+}
+
+/* selected link */
+a:active {
+  color: black;
+  text-decoration: none;
 }
 
 .leftBar {
-    background-color: aqua;
     float: left;
     width: 150px;
 }
 
+.leftBar ul {
+	line-height: 1.5em;
+}
+
+
 .rightBar {
-    background-color: aqua;
     float: right;
     width: 150px;
+   
 }
 
 .middleSection {
-    background-color: aqua;
     margin-left: 300px;
     margin-right: 300px;
     margin-bottom: 10px;
@@ -31,7 +68,7 @@ header {
 .postBox {
 	width: 60%;
 	margin: auto;
-	border: thick black solid;
+	border: thin black solid;
 	margin-top: 10px;
 }
 

@@ -1,5 +1,7 @@
 package com.ilkic.site.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,6 +26,8 @@ public class PostEntity {
 	@Column(name = "author")
 	private String author;
 	
+	@Column(name = "createDate")
+	private Date createDate;
 
 
 	public PostEntity() {
@@ -62,5 +66,14 @@ public class PostEntity {
 		this.author = author;
 	}
 	
+
+	public Date getCreateDate() {
+		return createDate;
+	}
+
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
+	}
+
 	
 }

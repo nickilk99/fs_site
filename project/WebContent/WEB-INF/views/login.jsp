@@ -17,7 +17,7 @@
     <main>
 <%@include file="/WEB-INF/views/template/menu.jsp"%>
 
-        <div class="rightBar">3</div>
+        <div class="rightBar"></div>
 
 
 <div class="middleSection">

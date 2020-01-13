@@ -17,7 +17,7 @@
     <main>
 <%@include file="/WEB-INF/views/template/menu.jsp"%>
 
-        <div class="rightBar">3</div>
+        <div class="rightBar"></div>
 
 
 <div class="middleSection">
@@ -26,12 +26,12 @@
 		<form:form action="createPost" method="post" modelAttribute="post">
 			<table>
 				<tr>
-					<td>Title</td>
+					<td>Title:</td>
 					<td><form:input path="title" /></td>
 				</tr>
 
 				<tr>
-					<td>Test</td>
+					<td>Body:</td>
 					<td><form:textarea path="postBody" /></td>
 				</tr>
 				

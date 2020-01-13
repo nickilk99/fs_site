@@ -19,7 +19,7 @@
     <main>
 <%@include file="/WEB-INF/views/template/menu.jsp"%>
 
-        <div class="rightBar">3</div>
+        <div class="rightBar"></div>
 
 
 <div class="middleSection">
@@ -31,11 +31,10 @@
 		
 				<div class="postBox">
 				<h4><c:out value="${post.title}"></c:out></h4>
-				<p class="postBody"><c:out value="${post.title}"></c:out></p>
-				<p class="postAuthor">Author: <c:out value="${post.author}"></c:out> </p>
-				<p><a href="posts/${post.id}">permalink</a> | <a href="editpost?postId=${post.id}">update
-							</a> | <a href="deletepost?postId=${post.id}">delete
-							</a></p>
+				<p class="postBody"><c:out value="${post.postBody}"></c:out></p>
+				<p class="postAuthorDate">Posted By <strong><c:out value="${post.author}"></c:out></strong> on <strong><c:out value="${post.createDate}"></c:out></strong> </p>
+				
+				<p><a href="posts/${post.id}">permalink</a> | <a href="editpost?postId=${post.id}">update</a> | <a href="deletepost?postId=${post.id}">delete</a></p>
 				</div>
 				
 				

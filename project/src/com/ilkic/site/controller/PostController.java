@@ -82,7 +82,7 @@ public class PostController {
 	
 	
 	@RequestMapping(value = "editpost")
-	public ModelAndView editStudent(@RequestParam("postId") int postId) {
+	public ModelAndView editPost(@RequestParam("postId") int postId) {
 		ModelAndView mv = new ModelAndView("update-post");
 		PostEntity fetchedPost = service.getPostById(postId);
 		mv.addObject("editedpost", fetchedPost);
@@ -90,7 +90,7 @@ public class PostController {
 	}
 
 	@RequestMapping(value = "updatePost")
-	public String updatePost(@ModelAttribute("student") PostEntity post) {
+	public String updatePost(@ModelAttribute("post") PostEntity post) {
 		if (service.updatePost(post)) {
 			return "redirect:/getposts";
 		} else {

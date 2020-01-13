@@ -1,3 +1,8 @@
+<%
+String user = null;
+if(session.getAttribute("UserEntity") == null){
+	response.sendRedirect("login.html");} 
+%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -17,7 +22,7 @@
     <main>
 <%@include file="/WEB-INF/views/template/menu.jsp"%>
 
-        <div class="rightBar">3</div>
+        <div class="rightBar"></div>
 
 
 	<div class="middleSection">
@@ -41,9 +46,5 @@
 	
 </main>
 </body>
-<%
-String user = null;
-if(session.getAttribute("UserEntity") == null){
-	response.sendRedirect("login.html");} 
-%>
+
 </html>

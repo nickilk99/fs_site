@@ -17,14 +17,14 @@
     <main>
         <%@include file="/WEB-INF/views/template/menu.jsp"%>
 
-        <div class="rightBar">3</div>
+        <div class="rightBar"></div>
 
 
 
 
         <div class="middleSection">
             <div align="center">
-                Cool Student List
+                User List
                 <table border="1">
                     <tr>
                         <th>name</th>
@@ -32,7 +32,7 @@
                         <th>email</th>
                     </tr>
 
-                    <c:forEach var="user" items="${userList}">
+                    <c:forEach var="user" items="${userList}"><br>
                         <tr>
                             <td>
                                 <c:out value="${user.name}"></c:out>
@@ -43,10 +43,6 @@
                             <td>
                                 <c:out value="${user.email}"></c:out>
                             </td>
-                            <td><a href="edituser?userId=${user.id}">update
-                                    me!</a></td>
-                            <td><a href="deleteuser?userId=${user.id}">delete
-                                    me</a></td>
                         </tr>
                     </c:forEach>
 
