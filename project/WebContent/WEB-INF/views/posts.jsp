@@ -13,9 +13,7 @@
 </head>
 
 <body>
-    <header>
-
-    </header>
+<%@include file="/WEB-INF/views/template/header.jsp"%>
     <main>
 <%@include file="/WEB-INF/views/template/menu.jsp"%>
 
@@ -26,7 +24,7 @@
 
 Test Page
 </div>
-
+</main>
 </body>
 <%
 String user = null;

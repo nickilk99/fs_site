@@ -2,6 +2,8 @@
     pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ page import="com.ilkic.site.model.PostEntity" %>
+<%@ page import="java.util.List" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,9 +15,7 @@
 </head>
 
 <body>
-    <header>
-
-    </header>
+<%@include file="/WEB-INF/views/template/header.jsp"%>
     <main>
 <%@include file="/WEB-INF/views/template/menu.jsp"%>
 
@@ -25,29 +25,41 @@
 <div class="middleSection">
 	<div align="center">
 		Post List
-		<table border="1">
-			<tr>
-				<th>title</th>
-				<th>body</th>
-				<th>author</th>
-			</tr>
+
 
 			<c:forEach var="post" items="${postList}">
-				<tr>
-					<td><c:out value="${post.title}"></c:out></td>
-					<td><c:out value="${post.postBody}"></c:out></td>
-					<td><c:out value="${post.author}"></c:out></td>
-					<td><a href="editpost?postId=${post.id}">update
-							me!</a></td>
-					<td><a href="deletepost?postId=${post.id}">delete
-							me</a></td>
-				</tr>
+		
+				<div class="postBox">
+				<h4><c:out value="${post.title}"></c:out></h4>
+				<p class="postBody"><c:out value="${post.title}"></c:out></p>
+				<p class="postAuthor">Author: <c:out value="${post.author}"></c:out> </p>
+				<p><a href="posts/${post.id}">permalink</a> | <a href="editpost?postId=${post.id}">update
+							</a> | <a href="deletepost?postId=${post.id}">delete
+							</a></p>
+				</div>
+				
+				
+				
+				
+				
+				
+				
+				
+				
 			</c:forEach>
 
+			
+			
+			
+			
+
+			
+			
+			
 		</table>
 	</div>
 	</div>
-
+</main>
 </body>
 <%
 String user = null;

@@ -11,9 +11,7 @@
 </head>
 
 <body>
-    <header>
-
-    </header>
+<%@include file="/WEB-INF/views/template/header.jsp"%>
     <main>
 <%@include file="/WEB-INF/views/template/menu.jsp"%>
 
@@ -23,6 +21,13 @@
         <div class="middleSection">
         <c:out value="${sessionScope.UserEntity.name}"/>
 		<c:out value="${sessionScope.UserEntity.username}"/>
+		<br>
+
+		
+		
+
+
+
 		</div>
 
 

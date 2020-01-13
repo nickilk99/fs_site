@@ -5,18 +5,24 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ilkic.site.model.PostEntity;
 import com.ilkic.site.service.PostService;
+import com.ilkic.site.service.UserService;
 
 @Controller
 public class PostController {
 
 	@Autowired
 	PostService service;
+	
+	@Autowired
+	UserService userservice;
 	
 	
 	@RequestMapping("/post")
@@ -32,6 +38,8 @@ public class PostController {
 		ModelAndView modelView = new ModelAndView("post-list");
 
 		List<PostEntity> posts = service.getPosts();
+		modelView.addObject("UserService", userservice);
+
 		modelView.addObject("postList", posts);
 		modelView.addObject("post", new PostEntity());
 
@@ -47,6 +55,46 @@ public class PostController {
 		else {
 			System.out.println("fail");
 			return "redirect:/home";
+		}
+	}
+	
+	
+	// ..../testconfigproject/students/student/Alex
+	// Alex would be passed via path variable
+	@RequestMapping(value = "/posts/{post}", method = RequestMethod.GET)
+	public ModelAndView getPost(@PathVariable("post") int postId) {
+		ModelAndView modelView = new ModelAndView("post-view");
+		PostEntity singlepost = service.getPostById(postId);
+		modelView.addObject("singlePost", singlepost);
+
+		return modelView;
+	}
+	
+	@RequestMapping(value = "deletepost")
+	public String deletePost(@RequestParam("postId") int postId) {
+		if (service.deletePost(postId)) {
+			return "redirect:/getposts";
+		}
+		else {
+			return "ErrorPage";
+		}
+	}
+	
+	
+	@RequestMapping(value = "editpost")
+	public ModelAndView editStudent(@RequestParam("postId") int postId) {
+		ModelAndView mv = new ModelAndView("update-post");
+		PostEntity fetchedPost = service.getPostById(postId);
+		mv.addObject("editedpost", fetchedPost);
+		return mv;
+	}
+
+	@RequestMapping(value = "updatePost")
+	public String updatePost(@ModelAttribute("student") PostEntity post) {
+		if (service.updatePost(post)) {
+			return "redirect:/getposts";
+		} else {
+			return "ErrorPage";
 		}
 	}
 	

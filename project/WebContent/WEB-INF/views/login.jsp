@@ -13,9 +13,7 @@
 </head>
 
 <body>
-    <header>
-
-    </header>
+<%@include file="/WEB-INF/views/template/header.jsp"%>
     <main>
 <%@include file="/WEB-INF/views/template/menu.jsp"%>
 
@@ -44,6 +42,6 @@
 		</form:form>
 	</div>
 	</div>
+	</main>
 </body>
-</html>
 </html>

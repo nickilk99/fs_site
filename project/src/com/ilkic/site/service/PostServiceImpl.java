@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ilkic.site.dao.PostDao;
-import com.ilkic.site.dao.UserDao;
 import com.ilkic.site.model.PostEntity;
 
 @Service
@@ -30,6 +29,16 @@ public class PostServiceImpl implements PostService{
 	@Override
 	public PostEntity getPostById(int postId) {
 		return postDao.getPostById(postId);
+	}
+
+	@Override
+	public boolean deletePost(int postId) {
+		return postDao.deletePost(postId);
+	}
+
+	@Override
+	public boolean updatePost(PostEntity post) {
+		return postDao.updatePost(post);
 	}
 
 }

@@ -8,10 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.ilkic.site.model.PostEntity;
-import com.ilkic.site.model.UserEntity;
 
 @Repository
 public class PostDaoImpl implements PostDao{
+	
+	@Autowired
+	PostDao postDao;
 
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -36,5 +38,21 @@ public class PostDaoImpl implements PostDao{
 	protected Session getSession(){
 		return sessionFactory.getCurrentSession();
 	}
+
+	@Override
+	public boolean deletePost(int postId) {
+		PostEntity fetchedPost = getPostById(postId);
+		getSession().delete(fetchedPost);
+		return true;
+
+	}
+
+	@Override
+	public boolean updatePost(PostEntity post) {
+		getSession().update(post);
+		return true;
+	}
+	
+	
 
 }
