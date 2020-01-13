@@ -2,7 +2,7 @@
 
 <header>
 <div class="headerTitle">
-<h1>BlogSite</h1>
+<h1>Blog Site</h1>
 </div>
 
 

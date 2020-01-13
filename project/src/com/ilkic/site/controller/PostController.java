@@ -12,18 +12,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ilkic.site.model.PostEntity;
+import com.ilkic.site.model.UserEntity;
 import com.ilkic.site.service.PostService;
 import com.ilkic.site.service.UserService;
+import com.ilkic.site.service.UserServiceImpl;
 
 @Controller
 public class PostController {
 
 	@Autowired
 	PostService service;
-	
+
 	@Autowired
 	UserService userservice;
-	
 	
 	@RequestMapping("/post")
 	public ModelAndView createPost() {
@@ -38,7 +39,7 @@ public class PostController {
 		ModelAndView modelView = new ModelAndView("post-list");
 
 		List<PostEntity> posts = service.getPosts();
-		modelView.addObject("UserService", userservice);
+		modelView.addObject("userservice", new UserServiceImpl());
 
 		modelView.addObject("postList", posts);
 		modelView.addObject("post", new PostEntity());

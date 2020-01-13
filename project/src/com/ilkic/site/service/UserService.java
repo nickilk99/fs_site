@@ -22,4 +22,6 @@ public interface UserService {
 	public boolean validate(UserEntity usr, HttpSession session);
 	
 	boolean isLogged(HttpServletRequest request);
+
+	void sayHello();
 }

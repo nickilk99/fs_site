@@ -56,5 +56,11 @@ public class UserServiceImpl implements UserService{
 		}
 		return false;
 	}
+	
+	@Override
+	public void sayHello() {
+		System.out.println("hello");
+	}
+	
 
 }

@@ -3,6 +3,8 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ page import="com.ilkic.site.model.PostEntity" %>
+<%@ page import="com.ilkic.site.service.UserServiceImpl" %>
+
 <%@ page import="java.util.List" %>
 
 <!DOCTYPE html>
@@ -26,8 +28,14 @@
 	<div align="center">
 		Post List
 
-
-			<c:forEach var="post" items="${postList}">
+	<% 
+	UserServiceImpl userservice = (UserServiceImpl)request.getAttribute("userservice");
+	userservice.sayHello();
+	userservice.getUserById(2);
+	%>
+	
+	
+	<c:forEach var="post" items="${postList}">
 		
 				<div class="postBox">
 				<h4><c:out value="${post.title}"></c:out></h4>
