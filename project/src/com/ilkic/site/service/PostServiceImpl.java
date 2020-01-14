@@ -1,5 +1,6 @@
 package com.ilkic.site.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,8 @@ public class PostServiceImpl implements PostService{
 	
 	@Override
 	public boolean addPost(PostEntity post) {
+		Date date = new Date();
+		post.setCreateDate(date);
 		return postDao.addPost(post) > 0 ;
 	}
 

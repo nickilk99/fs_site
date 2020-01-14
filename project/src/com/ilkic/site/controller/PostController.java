@@ -2,8 +2,6 @@ package com.ilkic.site.controller;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -13,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ilkic.site.model.CommentEntity;
 import com.ilkic.site.model.PostEntity;
 import com.ilkic.site.service.PostService;
 import com.ilkic.site.service.UserService;
@@ -72,9 +71,20 @@ public class PostController {
 		ModelAndView modelView = new ModelAndView("post-view");
 		PostEntity singlepost = service.getPostById(postId);
 		modelView.addObject("singlePost", singlepost);
+		modelView.addObject("comment", new CommentEntity());
+
 
 		return modelView;
 	}
+	
+	
+
+	
+	
+	
+	
+	
+	
 	
 	@RequestMapping(value = "deletepost")
 	public String deletePost(@RequestParam("postId") int postId) {
