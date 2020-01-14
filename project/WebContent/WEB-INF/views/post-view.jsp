@@ -27,7 +27,7 @@
 	
 		<div align="center">
 
-		<form:form action="createComment" method="post" modelAttribute="comment">
+		<form:form action="createComment" method="post" modelAttribute="commentform">
 			<table>
 				<tr>
 					<td>Body:</td>
@@ -40,11 +40,31 @@
 					<td colspan="2"><input type="submit" value="Post"></td>
 				</tr>
 			</table>
+			</form:form>
+			<br><br><br>
+			<div>
+				<c:forEach var="comments" items="${commentList}">
+		
+				<div class="commentBox">
+				<c:out value="${comments.createDate}"></c:out>
 
-		</form:form>
-	</div>
-		
-		
+				<p class="commentBody"><c:out value="${comments.commentBody}"></c:out></p>
+
+				<p class="commentBody"><c:out value="${comments.author.name}"></c:out></p>
+				</div>
+				
+				
+				
+				
+				
+				
+				
+				
+				
+			</c:forEach>
+			
+			</div>
+
 		
 	</div>
 	</main>

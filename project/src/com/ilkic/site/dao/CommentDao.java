@@ -15,5 +15,7 @@ public interface CommentDao {
 	public boolean deleteComment(int commentId);
 
 	boolean updateComment(CommentEntity comment);
+
+	public List<CommentEntity> getCommentsByPostId(int postId);
 	
 }

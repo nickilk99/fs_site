@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -52,6 +53,22 @@ public class CommentDaoImpl implements CommentDao{
 	
 	protected Session getSession(){
 		return sessionFactory.getCurrentSession();
+	}
+
+	
+	@Override
+	public List<CommentEntity> getCommentsByPostId(int postId) {
+		String hql = "from CommentEntity where post.id= :postId";
+		Query query = getSession().createQuery(hql);
+		query.setParameter("postId",postId);
+		if (query.list().size() > 0) {
+			return (List<CommentEntity>)query.list();
+		}
+		else {
+			return null;
+		}
+			
+		
 	}
 
 }

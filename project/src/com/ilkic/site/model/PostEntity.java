@@ -29,6 +29,7 @@ public class PostEntity {
 	@JoinColumn(name = "author")
 	private UserEntity author;
 	
+	
 	@Column(name = "createDate")
 	private Date createDate;
 

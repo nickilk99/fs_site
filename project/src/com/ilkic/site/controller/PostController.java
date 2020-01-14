@@ -13,9 +13,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ilkic.site.model.CommentEntity;
 import com.ilkic.site.model.PostEntity;
+import com.ilkic.site.service.CommentService;
 import com.ilkic.site.service.PostService;
 import com.ilkic.site.service.UserService;
-import com.ilkic.site.service.UserServiceImpl;
 
 @Controller
 public class PostController {
@@ -24,6 +24,8 @@ public class PostController {
 	PostService service;
 	@Autowired
 	UserService userservice;
+	@Autowired
+	CommentService commentservice;
 
 	
 	@RequestMapping("/post")
@@ -39,10 +41,8 @@ public class PostController {
 		ModelAndView modelView = new ModelAndView("post-list");
 
 		List<PostEntity> posts = service.getPosts();
-		modelView.addObject("userservice", new UserServiceImpl());
 
 		modelView.addObject("postList", posts);
-		modelView.addObject("post", new PostEntity());
 
 		return modelView;
 	}
@@ -70,8 +70,15 @@ public class PostController {
 	public ModelAndView getPost(@PathVariable("post") int postId) {
 		ModelAndView modelView = new ModelAndView("post-view");
 		PostEntity singlepost = service.getPostById(postId);
+		List<CommentEntity> comments = commentservice.getCommentsByPostId(postId);
+		
 		modelView.addObject("singlePost", singlepost);
-		modelView.addObject("comment", new CommentEntity());
+		modelView.addObject("commentList", comments);
+		modelView.addObject("commentform", new CommentEntity());
+		
+		
+		
+		
 
 
 		return modelView;
