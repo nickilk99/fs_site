@@ -2,6 +2,8 @@ package com.ilkic.site.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -12,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ilkic.site.model.PostEntity;
-import com.ilkic.site.model.UserEntity;
 import com.ilkic.site.service.PostService;
 import com.ilkic.site.service.UserService;
 import com.ilkic.site.service.UserServiceImpl;
@@ -22,9 +23,9 @@ public class PostController {
 
 	@Autowired
 	PostService service;
-
 	@Autowired
 	UserService userservice;
+
 	
 	@RequestMapping("/post")
 	public ModelAndView createPost() {
@@ -48,8 +49,12 @@ public class PostController {
 	}
 	
 	@RequestMapping(value = "createPost", method = RequestMethod.POST)
-	public String createPost(@ModelAttribute("post") PostEntity post) {
+	public String createPost(@ModelAttribute("post") PostEntity post ) {
+//		int authorid = (int) request.getAttribute("authorid");
+//		post.setAuthor(userservice.getUserById(authorid));
+//		post.setAuthor(userservice.getUserById(userId));
 		if (service.addPost(post)) {
+			
 			System.out.println("success");
 			return "redirect:/home";
 			}

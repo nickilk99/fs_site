@@ -22,7 +22,7 @@
 		id: <c:out value="${requestScope.singlePost.id}"/><br>
 		Title: <c:out value="${requestScope.singlePost.title}"/><br>
 		Post: <c:out value="${requestScope.singlePost.postBody}"/><br>
-		Author: <c:out value="${requestScope.singlePost.author}"/>
+		Author: <c:out value="${requestScope.singlePost.author.name}"/>
 	</div>
 </body>
 </html>

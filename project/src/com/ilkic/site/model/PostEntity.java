@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -23,8 +25,9 @@ public class PostEntity {
 	@Column(name = "postBody")
 	private String postBody;
 	
-	@Column(name = "author")
-	private String author;
+	@ManyToOne
+	@JoinColumn(name = "author")
+	private UserEntity author;
 	
 	@Column(name = "createDate")
 	private Date createDate;
@@ -32,6 +35,10 @@ public class PostEntity {
 
 	public PostEntity() {
 		
+	}
+	
+	public PostEntity(UserEntity author) {
+		this.author = author;
 	}
 
 	public int getId() {
@@ -58,11 +65,11 @@ public class PostEntity {
 		this.postBody = postBody;
 	}
 	
-	public String getAuthor() {
+	public UserEntity getAuthor() {
 		return author;
 	}
 
-	public void setAuthor(String author) {
+	public void setAuthor(UserEntity author) {
 		this.author = author;
 	}
 	

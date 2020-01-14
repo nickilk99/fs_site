@@ -36,9 +36,9 @@
 				<div class="postBox">
 				<h4><c:out value="${post.title}"></c:out></h4>
 				<p class="postBody"><c:out value="${post.postBody}"></c:out></p>
-				<p class="postAuthorDate">Posted By <strong><c:out value="${post.author}"></c:out></strong> on <strong><c:out value="${post.createDate}"></c:out></strong> </p>
+				<p class="postAuthorDate">Posted By <strong><c:out value="${post.author.name}"></c:out></strong> on <strong><c:out value="${post.createDate}"></c:out></strong> </p>
 				
-				<p><a href="posts/${post.id}">permalink</a> | <a href="editpost?postId=${post.id}">update</a> | <a href="deletepost?postId=${post.id}">delete</a></p>
+				<p><a href="posts/${post.id}">permalink</a><c:if test="${post.author.id==sessionScope.UserEntity.id}"> | <a href="editpost?postId=${post.id}">update</a> | <a href="deletepost?postId=${post.id}">delete</a></c:if></p>
 				</div>
 				
 				

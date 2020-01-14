@@ -97,6 +97,13 @@ public class UserEntity {
 	}
 
 
+	@Override
+	public String toString() {
+		return "UserEntity [id=" + id + ", name=" + name + ", username=" + username + ", password=" + password
+				+ ", email=" + email + ", isActive=" + isActive + "]";
+	}
+
+
 
 	
 	

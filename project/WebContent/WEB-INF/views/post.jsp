@@ -34,9 +34,8 @@
 					<td>Body:</td>
 					<td><form:textarea path="postBody" /></td>
 				</tr>
-				
+				<form:hidden path="author.id" value="${sessionScope.UserEntity.username}"/>
 	
-  					<form:hidden path="author" value="${sessionScope.UserEntity.id}"/>
 				<tr>
 					<td colspan="2"><input type="submit" value="Post"></td>
 				</tr>
