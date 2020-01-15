@@ -49,6 +49,18 @@ public class CommentServiceImpl implements CommentService{
 	public List<CommentEntity> getCommentsByPostId(int postId) {
 		return commentDao.getCommentsByPostId(postId);
 	}
+
+	@Override
+	public boolean updateCommand(CommentEntity comment) {
+		return commentDao.updateComment(comment);
+
+	}
+
+	@Override
+	public CommentEntity getCommentById(int commentId) {
+		return commentDao.getCommentById(commentId);
+
+	}
 	
 
 }

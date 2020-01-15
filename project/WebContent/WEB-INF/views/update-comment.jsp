@@ -9,21 +9,19 @@
 </head>
 <body>
 	<div align="center">
-		<form:form action="updatePost" method="post" 
-			modelAttribute="editedpost">
+		<form:form action="updateComment" method="post" 
+			modelAttribute="newComment">
 			<table>
 					<form:hidden path="id" />
 				
-				<tr>
-					<td>Title</td>
-					<td><form:input path="title" /></td>
-				</tr>
 
 				<tr>
 					<td>Body</td>
-					<td><form:textarea path="postBody" /></td>
+					<td><form:textarea path="commentBody" /></td>
 				</tr>
-				<form:hidden path="author.id" value="${requestScope.editedpost.author.id}"/>
+				<form:hidden path="author.id" value="${sessionScope.UserEntity.id}"/>
+				<form:hidden path="post.id" value='<%= request.getParameter("commentId") %>'/>
+				
 
 				<tr>
 					<td colspan="2"><input type="submit" value="Update"></td>
@@ -32,5 +30,12 @@
 
 		</form:form>
 	</div>
+	Hello <b><%= request.getParameter("commentId") %></b>
+	<%
+	out.print(session.getAttribute("post_id"));
+String user = null;
+if(session.getAttribute("UserEntity") == null){
+	response.sendRedirect("login.html");} 
+%>
 </body>
 </html>

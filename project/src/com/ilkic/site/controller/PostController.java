@@ -55,7 +55,7 @@ public class PostController {
 		if (service.addPost(post)) {
 			
 			System.out.println("success");
-			return "redirect:/home";
+			return "redirect:/posts/"+ post.getId();
 			}
 		else {
 			System.out.println("fail");
@@ -116,6 +116,27 @@ public class PostController {
 	public String updatePost(@ModelAttribute("post") PostEntity post) {
 		if (service.updatePost(post)) {
 			return "redirect:/getposts";
+		} else {
+			return "ErrorPage";
+		}
+	}
+	
+	
+	
+	@RequestMapping(value = "editComment")
+	public ModelAndView editComment(@RequestParam("commentId") int postid) {
+		ModelAndView mv = new ModelAndView("update-comment");
+		CommentEntity newComment = new CommentEntity(postid);
+		mv.addObject("newComment", newComment);
+
+		return mv;
+	}
+	
+	
+	@RequestMapping(value = "updateComment")
+	public String updateComment(@ModelAttribute("comment") CommentEntity comment) {
+		if (commentservice.addComment(comment)) {
+		    return "redirect:/posts/"+ comment.getPost().getId();
 		} else {
 			return "ErrorPage";
 		}

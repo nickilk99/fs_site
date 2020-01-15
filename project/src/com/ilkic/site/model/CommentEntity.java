@@ -35,6 +35,11 @@ public class CommentEntity {
 
 	public CommentEntity() {
 	}
+	
+	public CommentEntity(int id) {
+		this.id = id;
+	}
+
 
 	public int getId() {
 		return id;

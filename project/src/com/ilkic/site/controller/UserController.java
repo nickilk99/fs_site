@@ -60,7 +60,7 @@ public class UserController {
 	public String createPost(@ModelAttribute("user") UserEntity user) {
 		if (service.addUser(user)) {
 			System.out.println("success");
-			return "redirect:/home";
+			return "redirect:/login";
 			}
 		else {
 			System.out.println("fail");

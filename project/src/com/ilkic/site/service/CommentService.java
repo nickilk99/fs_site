@@ -19,4 +19,8 @@ public interface CommentService {
 
 	public List<CommentEntity> getCommentsByPostId(int postId);
 
+	public boolean updateCommand(CommentEntity comment);
+
+	public CommentEntity getCommentById(int commentId);
+
 }

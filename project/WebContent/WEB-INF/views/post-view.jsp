@@ -27,20 +27,7 @@
 	
 		<div align="center">
 
-		<form:form action="createComment" method="post" modelAttribute="commentform">
-			<table>
-				<tr>
-					<td>Body:</td>
-					<td><form:textarea path="commentBody" /></td>
-				</tr>
-				<form:hidden path="author.id" value="${sessionScope.UserEntity.id}"/>
-				<form:hidden path="post.id" value="${requestScope.singlePost.id}"/>
-	
-				<tr>
-					<td colspan="2"><input type="submit" value="Post"></td>
-				</tr>
-			</table>
-			</form:form>
+<a href='/project/editComment?commentId=<c:out value="${requestScope.singlePost.id}"/>'>Leave a comment!</a>
 			<br><br><br>
 			<div>
 				<c:forEach var="comments" items="${commentList}">

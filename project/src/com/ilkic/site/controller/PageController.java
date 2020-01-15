@@ -59,7 +59,7 @@ public class PageController {
 	}
 	
 	
-//make it so you can see any use here
+//make it so you can see any user here
 //	// ..../testconfigproject/students/student/Alex
 //	// Alex would be passed via path variable
 //	@RequestMapping(value = "/student/{name}", method = RequestMethod.GET)
