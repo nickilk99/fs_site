@@ -6,59 +6,69 @@
 
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="ISO-8859-1">
-<style><%@include file="/WEB-INF/views/css/main.css"%></style>
-<title>Ilkic</title>
+    <meta charset="ISO-8859-1">
+    <style>
+        <%@include file="/WEB-INF/views/css/main.css"%>
+
+    </style>
+    <title>Ilkic</title>
 </head>
+
 <body>
-<%@include file="/WEB-INF/views/template/header.jsp"%>
+    <%@include file="/WEB-INF/views/template/header.jsp"%>
     <main>
-<%@include file="/WEB-INF/views/template/menu.jsp"%>
+        <%@include file="/WEB-INF/views/template/menu.jsp"%>
 
         <div class="rightBar"></div>
-	
-	<div class="middleSection">
-		id: <c:out value="${requestScope.singlePost.id}"/><br>
-		Title: <c:out value="${requestScope.singlePost.title}"/><br>
-		Post: <c:out value="${requestScope.singlePost.postBody}"/><br>
-		Author: <c:out value="${requestScope.singlePost.author.name}"/>
-	</div>
-	
-		<div align="center">
 
-<a href='/project/editComment?commentId=<c:out value="${requestScope.singlePost.id}"/>'>Leave a comment!</a>
-			<br><br><br>
-			<div>
-				<c:forEach var="comments" items="${commentList}">
-		
-				<div class="commentBox">
-				<c:out value="${comments.createDate}"></c:out>
+        <div class="middleSection">
 
-				<p class="commentBody"><c:out value="${comments.commentBody}"></c:out></p>
+            <div class="blogPost">
+                <h2>
+                    <c:out value="${requestScope.singlePost.title}" />
+                </h2>
+                <p>
+                    <c:out value="${requestScope.singlePost.postBody}" />
+                </p>
+                Posted By:
+                <c:out value="${requestScope.singlePost.author.name}" />
+            </div>
 
-				<p class="commentBody"><c:out value="${comments.author.name}"></c:out></p>
-				</div>
-				
-				
-				
-				
-				
-				
-				
-				
-				
-			</c:forEach>
-			
-			</div>
+            <div class="blogPost">
+            <br>
+            <div class="center">
+                <a href='/project/editComment?commentId=<c:out value="${requestScope.singlePost.id}"/>'>Leave a comment!</a>
+            </div>
+            </div>
+        </div>
 
-		
-	</div>
-	</main>
+        <div class="middleSection">
+
+            <br><br><br>
+            <div>
+                <c:forEach var="comments" items="${commentList}">
+
+                    <div class="commentBox">
+
+
+                        <p class="commentBody">
+                            <c:out value="${comments.commentBody}"></c:out>
+                        </p>
+
+                        <p class="commentBody">
+                            <strong>Posted by <c:out value="${comments.author.name}"></c:out> on <c:out value="${comments.createDate}"></c:out></strong>
+                        </p>
+                    </div>
+
+                </c:forEach>
+
+            </div>
+
+
+        </div>
+    </main>
 </body>
+
 </html>
-
-
-
-
-

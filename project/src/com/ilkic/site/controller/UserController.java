@@ -57,7 +57,7 @@ public class UserController {
 	
 	
 	@RequestMapping(value = "createUser", method = RequestMethod.POST)
-	public String createPost(@ModelAttribute("user") UserEntity user) {
+	public String createPost(@ModelAttribute("user") UserEntity user, HttpSession session) {
 		if (service.addUser(user)) {
 			System.out.println("success");
 			return "redirect:/login";
