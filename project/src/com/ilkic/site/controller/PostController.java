@@ -1,5 +1,6 @@
 package com.ilkic.site.controller;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +42,7 @@ public class PostController {
 		ModelAndView modelView = new ModelAndView("post-list");
 
 		List<PostEntity> posts = service.getPosts();
+		Collections.reverse(posts);
 
 		modelView.addObject("postList", posts);
 

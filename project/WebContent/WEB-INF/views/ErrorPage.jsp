@@ -7,6 +7,6 @@
 <title>Error Page</title>
 </head>
 <body>
-Something has gone wrong.
+Login Error
 </body>
 </html>
