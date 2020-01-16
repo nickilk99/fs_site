@@ -32,13 +32,6 @@ public class UserController {
 		return modelView;
 	}
 
-	@RequestMapping("/login")
-	public ModelAndView valdate(@ModelAttribute("user") UserEntity usr) {
-		ModelAndView modelView = new ModelAndView("login");
-		modelView.addObject("user", new UserEntity());
-		return modelView;
-	}
-
 	@RequestMapping(value = "validate", method = RequestMethod.POST)
 	public String login(@ModelAttribute("user") UserEntity usr, HttpSession session) {
 		if (service.validate(usr, session))

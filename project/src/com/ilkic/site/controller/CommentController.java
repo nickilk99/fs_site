@@ -3,7 +3,6 @@ package com.ilkic.site.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -16,19 +15,6 @@ public class CommentController {
 
 	@Autowired
 	CommentService commentservice;
-
-	@PostMapping(value = "createComment")
-	public String createComment(@ModelAttribute("comment") CommentEntity comment) {
-
-		if (commentservice.addComment(comment)) {
-
-			System.out.println("success");
-			return "redirect:/home";
-		} else {
-			System.out.println("fail");
-			return "redirect:/home";
-		}
-	}
 
 	@RequestMapping(value = "editComment")
 	public ModelAndView editComment(@RequestParam("commentId") int postid) {
