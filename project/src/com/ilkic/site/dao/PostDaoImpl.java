@@ -10,14 +10,14 @@ import org.springframework.stereotype.Repository;
 import com.ilkic.site.model.PostEntity;
 
 @Repository
-public class PostDaoImpl implements PostDao{
-	
+public class PostDaoImpl implements PostDao {
+
 	@Autowired
 	PostDao postDao;
 
 	@Autowired
 	private SessionFactory sessionFactory;
-	
+
 	@Override
 	public int addPost(PostEntity post) {
 		sessionFactory.getCurrentSession().save(post);
@@ -33,9 +33,8 @@ public class PostDaoImpl implements PostDao{
 	public PostEntity getPostById(int postId) {
 		return (PostEntity) getSession().get(PostEntity.class, postId);
 	}
-	
-	
-	protected Session getSession(){
+
+	protected Session getSession() {
 		return sessionFactory.getCurrentSession();
 	}
 
@@ -52,7 +51,5 @@ public class PostDaoImpl implements PostDao{
 		getSession().update(post);
 		return true;
 	}
-	
-	
 
 }

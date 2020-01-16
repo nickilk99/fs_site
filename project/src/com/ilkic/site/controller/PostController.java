@@ -28,7 +28,6 @@ public class PostController {
 	@Autowired
 	CommentService commentservice;
 
-	
 	@RequestMapping("/post")
 	public ModelAndView createPost() {
 		ModelAndView modelView = new ModelAndView("post");
@@ -36,76 +35,57 @@ public class PostController {
 		return modelView;
 	}
 
-
 	@RequestMapping(value = "/getposts", method = RequestMethod.GET)
 	public ModelAndView getUsersList() {
 		ModelAndView modelView = new ModelAndView("post-list");
 
 		List<PostEntity> posts = service.getPosts();
+		
+		//reverse the order of the elements, that way the newest ones show on top of the post_list page.
 		Collections.reverse(posts);
-
+		
+		//limiting the number of chars in a post. does not affect database values
+		posts = service.limitCharsInPosts(posts);
+		
 		modelView.addObject("postList", posts);
-
 		return modelView;
 	}
-	
+
 	@RequestMapping(value = "createPost", method = RequestMethod.POST)
-	public String createPost(@ModelAttribute("post") PostEntity post ) {
-//		int authorid = (int) request.getAttribute("authorid");
-//		post.setAuthor(userservice.getUserById(authorid));
-//		post.setAuthor(userservice.getUserById(userId));
+	public String createPost(@ModelAttribute("post") PostEntity post) {
 		if (service.addPost(post)) {
-			
 			System.out.println("success");
-			return "redirect:/posts/"+ post.getId();
-			}
-		else {
+			
+			//user will be redirected to the new post, if it was added successfully
+			return "redirect:/posts/" + post.getId();
+		} else {
 			System.out.println("fail");
 			return "redirect:/home";
 		}
 	}
-	
-	
-	// ..../testconfigproject/students/student/Alex
-	// Alex would be passed via path variable
+
 	@RequestMapping(value = "/posts/{post}", method = RequestMethod.GET)
 	public ModelAndView getPost(@PathVariable("post") int postId) {
 		ModelAndView modelView = new ModelAndView("post-view");
 		PostEntity singlepost = service.getPostById(postId);
 		List<CommentEntity> comments = commentservice.getCommentsByPostId(postId);
-		
+
 		modelView.addObject("singlePost", singlepost);
 		modelView.addObject("commentList", comments);
 		modelView.addObject("commentform", new CommentEntity());
-		
-		
-		
-		
-
 
 		return modelView;
 	}
-	
-	
 
-	
-	
-	
-	
-	
-	
-	
 	@RequestMapping(value = "deletepost")
 	public String deletePost(@RequestParam("postId") int postId) {
 		if (service.deletePost(postId)) {
 			return "redirect:/getposts";
-		}
-		else {
+		} else {
 			return "ErrorPage";
 		}
 	}
-	
-	
+
 	@RequestMapping(value = "editpost")
 	public ModelAndView editPost(@RequestParam("postId") int postId) {
 		ModelAndView mv = new ModelAndView("update-post");
@@ -122,26 +102,5 @@ public class PostController {
 			return "ErrorPage";
 		}
 	}
-	
-	
-	
-	@RequestMapping(value = "editComment")
-	public ModelAndView editComment(@RequestParam("commentId") int postid) {
-		ModelAndView mv = new ModelAndView("update-comment");
-		CommentEntity newComment = new CommentEntity(postid);
-		mv.addObject("newComment", newComment);
 
-		return mv;
-	}
-	
-	
-	@RequestMapping(value = "updateComment")
-	public String updateComment(@ModelAttribute("comment") CommentEntity comment) {
-		if (commentservice.addComment(comment)) {
-		    return "redirect:/posts/"+ comment.getPost().getId();
-		} else {
-			return "ErrorPage";
-		}
-	}
-	
 }

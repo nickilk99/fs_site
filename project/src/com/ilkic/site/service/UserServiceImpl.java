@@ -14,14 +14,14 @@ import com.ilkic.site.model.UserEntity;
 
 @Service
 @Transactional
-public class UserServiceImpl implements UserService{
-	
+public class UserServiceImpl implements UserService {
+
 	@Autowired
 	UserDao userDao;
 
 	@Override
 	public boolean addUser(UserEntity usr) {
-		return userDao.insertUser(usr) > 0 ;
+		return userDao.insertUser(usr) > 0;
 	}
 
 	@Override
@@ -56,11 +56,10 @@ public class UserServiceImpl implements UserService{
 		}
 		return false;
 	}
-	
+
 	@Override
 	public void sayHello() {
 		System.out.println("hello");
 	}
-	
 
 }

@@ -15,29 +15,28 @@ import javax.persistence.Table;
 @Table(name = "post")
 public class PostEntity {
 
-	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private int id;
-	
+
 	@Column(name = "title")
 	private String title;
-	
+
 	@Column(name = "postBody")
 	private String postBody;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "author")
 	private UserEntity author;
-	
-	
+
 	@Column(name = "createDate")
 	private Date createDate;
 
-
 	public PostEntity() {
-		
+
 	}
-	
+
 	public PostEntity(UserEntity author) {
 		this.author = author;
 	}
@@ -65,7 +64,7 @@ public class PostEntity {
 	public void setPostBody(String postBody) {
 		this.postBody = postBody;
 	}
-	
+
 	public UserEntity getAuthor() {
 		return author;
 	}
@@ -73,7 +72,6 @@ public class PostEntity {
 	public void setAuthor(UserEntity author) {
 		this.author = author;
 	}
-	
 
 	public Date getCreateDate() {
 		return createDate;
@@ -83,5 +81,4 @@ public class PostEntity {
 		this.createDate = createDate;
 	}
 
-	
 }

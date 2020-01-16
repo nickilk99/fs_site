@@ -12,16 +12,16 @@ import com.ilkic.site.model.PostEntity;
 
 @Service
 @Transactional
-public class PostServiceImpl implements PostService{
+public class PostServiceImpl implements PostService {
 
 	@Autowired
 	PostDao postDao;
-	
+
 	@Override
 	public boolean addPost(PostEntity post) {
 		Date date = new Date();
 		post.setCreateDate(date);
-		return postDao.addPost(post) > 0 ;
+		return postDao.addPost(post) > 0;
 	}
 
 	@Override
@@ -42,6 +42,21 @@ public class PostServiceImpl implements PostService{
 	@Override
 	public boolean updatePost(PostEntity post) {
 		return postDao.updatePost(post);
+	}
+
+	@Override
+	public List<PostEntity> limitCharsInPosts(List<PostEntity> posts) {
+
+		for (int i = 0; i < posts.size(); i++) {
+			String postbody = posts.get(i).getPostBody();
+			if (postbody.length() > 100) {
+				posts.get(i).setPostBody(postbody.substring(0, 200));
+				System.out.println(posts.get(1).getPostBody());
+				posts.get(i).setPostBody(posts.get(i).getPostBody() + " . . . ");
+				System.out.println(posts.get(1).getPostBody());
+			}
+		}
+		return posts;
 	}
 
 }

@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/logout")
 public class LogoutController {
 
-  @RequestMapping()
-  public String logout(HttpSession session) {
-    session.invalidate();
-    return "redirect:/login";
-  }
+	@RequestMapping()
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/login";
+	}
 }

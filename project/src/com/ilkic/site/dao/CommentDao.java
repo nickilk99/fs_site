@@ -7,9 +7,9 @@ import com.ilkic.site.model.CommentEntity;
 public interface CommentDao {
 
 	public int addComment(CommentEntity entity);
-	
+
 	public List<CommentEntity> getComments();
-	
+
 	public CommentEntity getCommentById(int commentId);
 
 	public boolean deleteComment(int commentId);
@@ -17,5 +17,5 @@ public interface CommentDao {
 	boolean updateComment(CommentEntity comment);
 
 	public List<CommentEntity> getCommentsByPostId(int postId);
-	
+
 }

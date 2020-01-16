@@ -11,11 +11,11 @@ import org.springframework.stereotype.Repository;
 import com.ilkic.site.model.CommentEntity;
 
 @Repository
-public class CommentDaoImpl implements CommentDao{
-	
+public class CommentDaoImpl implements CommentDao {
+
 	@Autowired
 	CommentDao commentDao;
-	
+
 	@Autowired
 	private SessionFactory sessionFactory;
 
@@ -50,25 +50,23 @@ public class CommentDaoImpl implements CommentDao{
 		getSession().update(comment);
 		return true;
 	}
-	
-	protected Session getSession(){
+
+	protected Session getSession() {
 		return sessionFactory.getCurrentSession();
 	}
 
-	
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<CommentEntity> getCommentsByPostId(int postId) {
 		String hql = "from CommentEntity where post.id= :postId";
-		Query query = getSession().createQuery(hql);
-		query.setParameter("postId",postId);
+		Query<CommentEntity> query = getSession().createQuery(hql);
+		query.setParameter("postId", postId);
 		if (query.list().size() > 0) {
-			return (List<CommentEntity>)query.list();
-		}
-		else {
+			return (List<CommentEntity>) query.list();
+		} else {
 			return null;
 		}
-			
-		
+
 	}
 
 }

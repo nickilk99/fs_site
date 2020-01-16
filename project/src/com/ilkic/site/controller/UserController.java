@@ -17,7 +17,7 @@ import com.ilkic.site.service.UserService;
 @Controller
 @RequestMapping("/")
 public class UserController {
-	
+
 	@Autowired
 	UserService service;
 
@@ -31,46 +31,32 @@ public class UserController {
 
 		return modelView;
 	}
-	
-	
-	
+
 	@RequestMapping("/login")
 	public ModelAndView valdate(@ModelAttribute("user") UserEntity usr) {
 		ModelAndView modelView = new ModelAndView("login");
 		modelView.addObject("user", new UserEntity());
 		return modelView;
 	}
-	
-	
+
 	@RequestMapping(value = "validate", method = RequestMethod.POST)
 	public String login(@ModelAttribute("user") UserEntity usr, HttpSession session) {
-
-		
 		if (service.validate(usr, session))
-			
 			return "redirect:/home";
 		else {
 			return "ErrorPage";
 		}
 	}
-	
-	
-	
+
 	@RequestMapping(value = "createUser", method = RequestMethod.POST)
 	public String createPost(@ModelAttribute("user") UserEntity user, HttpSession session) {
 		if (service.addUser(user)) {
 			System.out.println("success");
 			return "redirect:/login";
-			}
-		else {
+		} else {
 			System.out.println("fail");
 			return "redirect:/home";
 		}
 	}
-	
-	
 
-	
-	
-	
 }

@@ -15,31 +15,31 @@ import javax.persistence.Table;
 @Table(name = "comment")
 public class CommentEntity {
 
-	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private int id;
-	
+
 	@Column(name = "commentBody")
 	private String commentBody;
-	
+
 	@Column(name = "createDate")
 	private Date createDate;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "author")
 	private UserEntity author;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "post")
 	private PostEntity post;
 
 	public CommentEntity() {
 	}
-	
+
 	public CommentEntity(int id) {
 		this.id = id;
 	}
-
 
 	public int getId() {
 		return id;
@@ -80,8 +80,5 @@ public class CommentEntity {
 	public void setPost(PostEntity post) {
 		this.post = post;
 	}
-	
-	
 
-	
 }

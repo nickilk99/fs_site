@@ -12,16 +12,16 @@ import com.ilkic.site.model.CommentEntity;
 
 @Service
 @Transactional
-public class CommentServiceImpl implements CommentService{
+public class CommentServiceImpl implements CommentService {
 
 	@Autowired
 	CommentDao commentDao;
-	
+
 	@Override
 	public boolean addComment(CommentEntity comment) {
 		Date date = new Date();
 		comment.setCreateDate(date);
-		return commentDao.addComment(comment) > 0 ;
+		return commentDao.addComment(comment) > 0;
 	}
 
 	@Override
@@ -61,6 +61,5 @@ public class CommentServiceImpl implements CommentService{
 		return commentDao.getCommentById(commentId);
 
 	}
-	
 
 }

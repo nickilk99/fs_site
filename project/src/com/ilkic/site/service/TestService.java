@@ -4,7 +4,7 @@ import org.springframework.stereotype.Component;
 
 @Component("TestService")
 public class TestService {
-    public void sysout(){
-        System.out.println("Hello world");
-    }
+	public void sysout() {
+		System.out.println("Hello world");
+	}
 }

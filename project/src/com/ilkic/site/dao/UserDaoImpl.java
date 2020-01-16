@@ -12,11 +12,11 @@ import org.springframework.stereotype.Repository;
 import com.ilkic.site.model.UserEntity;
 
 @Repository
-public class UserDaoImpl implements UserDao{
+public class UserDaoImpl implements UserDao {
 
 	@Autowired
 	private SessionFactory sessionFactory;
-	
+
 	@Override
 	public int insertUser(UserEntity usr) {
 		sessionFactory.getCurrentSession().save(usr);
@@ -32,9 +32,8 @@ public class UserDaoImpl implements UserDao{
 	public UserEntity getUserById(int usrId) {
 		return (UserEntity) getSession().get(UserEntity.class, usrId);
 	}
-	
-	
-	protected Session getSession(){
+
+	protected Session getSession() {
 		return sessionFactory.getCurrentSession();
 	}
 
@@ -50,29 +49,25 @@ public class UserDaoImpl implements UserDao{
 		getSession().update(usr);
 		return true;
 	}
-	
+
 	@Override
 	public boolean validate(UserEntity usr, HttpSession session) {
 
-        UserEntity userEntity = null;
-        String userName = usr.getUsername();
-        String password = usr.getPassword();
-      
-        userEntity = (UserEntity) getSession().createQuery("FROM UserEntity U WHERE U.username = :username").setParameter("username", userName).uniqueResult();
+		UserEntity userEntity = null;
+		String userName = usr.getUsername();
+		String password = usr.getPassword();
 
-            if (userEntity != null && userEntity.getPassword().equals(password)) {
-            	System.out.println("true");
-            	session.setAttribute("UserEntity" , userEntity);
-            	
-            	
-            	
-            	
-            	
-                return true;
-            }
-        System.out.println("fail");    
-        return false;
-    }
+		userEntity = (UserEntity) getSession().createQuery("FROM UserEntity U WHERE U.username = :username")
+				.setParameter("username", userName).uniqueResult();
 
+		if (userEntity != null && userEntity.getPassword().equals(password)) {
+			System.out.println("true");
+			session.setAttribute("UserEntity", userEntity);
+
+			return true;
+		}
+		System.out.println("fail");
+		return false;
+	}
 
 }
