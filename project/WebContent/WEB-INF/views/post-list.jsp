@@ -3,7 +3,6 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ page import="com.ilkic.site.model.PostEntity"%>
-<%@ page import="com.ilkic.site.service.UserServiceImpl"%>
 
 <%@ page import="java.util.List"%>
 

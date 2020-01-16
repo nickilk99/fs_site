@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="com.ilkic.site.model.UserEntity"%>
 
 
 <!DOCTYPE html>
@@ -24,7 +25,10 @@
         
         
         <div class="middleSection">
-        Welcome, <c:out value="${sessionScope.UserEntity.name}"/>, to the newest blog site on the internet!
+        Welcome<% if(session.getAttribute("UserEntity") != null){UserEntity ob = (UserEntity) session.getAttribute("UserEntity");
+        out.print(", " + ob.getName() + ", ");};
+
+%> to the newest blog site on the internet!
 		<br>
 
 
